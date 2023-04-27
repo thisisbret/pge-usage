@@ -18,11 +18,11 @@ if uploaded_file is not None:
   df = pd.read_csv(
     stringio,
     header=header_index, 
-    parse_dates= {"Date" : ["DATE","START TIME"]},
-    index_col=['Date']
+    parse_dates=True,
+    index_col=['DATE']
   )
 
-  df.drop(['END TIME'], axis='columns', inplace=True)
+  # df.drop(['END TIME'], axis='columns', inplace=True)
   df.USAGE = df.USAGE.astype('float16')
   df.COST = df.COST.str.replace('$', '', regex=False).astype('float16')
 
